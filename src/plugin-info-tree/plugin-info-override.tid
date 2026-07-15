@@ -1,0 +1,18 @@
+title: $:/core/ui/PluginInfo/Default/contents
+
+\whitespace trim
+<$let prefixText={{{ [<currentTiddler>addsuffix[/]] }}}>
+<$let core-overrides={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] :intersection[[$:/core]plugintiddlers[]] }}}>
+<$let other-shadows={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] -[[$:/core]plugintiddlers[]] }}}>
+
+<h4>Plugin tiddlers</h4>
+
+<$transclude $variable="tree" prefix=<<prefixText>>/>
+
+<$macrocall $name="pit-tree" source=<<core-overrides>> label="Core overrides"/>
+
+<$macrocall $name="pit-tree" source=<<other-shadows>> label="Other shadow tiddlers"/>
+
+</$let>
+</$let>
+</$let>

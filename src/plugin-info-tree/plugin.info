@@ -1,0 +1,12 @@
+{
+  "title": "$:/plugins/nikorion/plugin-info-tree",
+  "name": "Plugin Info Tree",
+  "description": "Replaces the default 'contents' tab in the plugin info panel with a tree view",
+  "author": "nikorion",
+  "source": "https://github.com/nikorion/TW-Plugin-Info-Tree",
+  "list": "readme license history",
+  "version": "0.1.0",
+  "core-version": ">=5.2.0",
+  "type": "application/json",
+  "plugin-type": "plugin"
+}

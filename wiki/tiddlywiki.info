@@ -1,0 +1,24 @@
+{
+  "description": "TW-Plugin-Info-Tree development wiki",
+  "plugins": [
+    "tiddlywiki/filesystem",
+    "tiddlywiki/tiddlyweb",
+    "tiddlywiki/katex",
+    "nikorion/plugin-info-tree"
+  ],
+  "themes": [
+    "tiddlywiki/vanilla"
+  ],
+  "pluginPath": "../src",
+  "build": {
+    "plugin-json": [
+      "--output", "dist",
+      "--savetiddler", "$:/plugins/nikorion/plugin-info-tree", "TW-Plugin-Info-Tree-Plugin.json", "application/json"
+    ],
+    "html": [
+      "--output", "docs",
+      "--rendertiddler", "$:/core/save/all", "TW-Plugin-Info-Tree-Wiki.html", "text/plain", "",
+      "publishFilter", "-[[$:/dev/hmr]] -[[$:/config/dev/hmr-port]] -[[$:/config/SyncFilter]] -[[$:/plugins/wikilabs/link-to-tabs]] -[[$:/plugins/kookma/commander]] -[[$:/plugins/oeyoews/tiddlywiki-codemirror-6]]"
+    ]
+  }
+}
