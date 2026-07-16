@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.0",
-    "tiddlywiki": "^5.3.6"
+    "tiddlywiki": "^5.4.1"
   }
 }

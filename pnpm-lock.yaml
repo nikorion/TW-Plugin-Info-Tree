@@ -12,8 +12,8 @@ importers:
         specifier: ^3.0.0
         version: 3.1.14
       tiddlywiki:
-        specifier: ^5.3.6
-        version: 5.4.0
+        specifier: ^5.4.1
+        version: 5.4.1
 
 packages:
 
@@ -126,8 +126,8 @@ packages:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
     engines: {node: '>=4'}
 
-  tiddlywiki@5.4.0:
-    resolution: {integrity: sha512-KD7kskwijrj4tOBjHY0XldQiQ2bnNNEsCXcGaYdIUeTqEMoKVK436Gkscc+qUwQE7APRyQ6t1gvbOKOLly1MvA==}
+  tiddlywiki@5.4.1:
+    resolution: {integrity: sha512-5Pnk7j8cUMoQHD0CarOWd4ixITURsN4DJxLfg8AGYSMiQoOHH6bp8JDCAgSdvZHRCQmvXtbm5FRxBFBT6WG24A==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
@@ -245,7 +245,7 @@ snapshots:
     dependencies:
       has-flag: 3.0.0
 
-  tiddlywiki@5.4.0: {}
+  tiddlywiki@5.4.1: {}
 
   to-regex-range@5.0.1:
     dependencies:
