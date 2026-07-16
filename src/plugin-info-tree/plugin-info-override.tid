@@ -5,13 +5,13 @@ title: $:/core/ui/PluginInfo/Default/contents
 <$let core-overrides={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] :intersection[[$:/core]plugintiddlers[]] }}}>
 <$let other-shadows={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] -[[$:/core]plugintiddlers[]] }}}>
 
-<h4>Plugin tiddlers</h4>
+<h4><<plugin-info-tree-lingo-text Tree/PluginTiddlers>></h4>
 
 <$transclude $variable="tree" prefix=<<prefixText>>/>
 
-<$macrocall $name="pit-tree" source=<<core-overrides>> label="Core overrides"/>
+<$macrocall $name="pit-tree" source=<<core-overrides>> label=<<plugin-info-tree-lingo-text Tree/CoreOverrides>>/>
 
-<$macrocall $name="pit-tree" source=<<other-shadows>> label="Other shadow tiddlers"/>
+<$macrocall $name="pit-tree" source=<<other-shadows>> label=<<plugin-info-tree-lingo-text Tree/OtherShadowTiddlers>>/>
 
 </$let>
 </$let>

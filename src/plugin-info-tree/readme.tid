@@ -1,40 +1,9 @@
 title: $:/plugins/nikorion/plugin-info-tree/readme
 type: text/vnd.tiddlywiki
 
-!! Overview
-
-Replaces the flat tiddler list in the "Contents" tab of the plugin info panel with up to three hierarchical tree views, grouped by `/`-separated path segments — the same style of tree used elsewhere in TiddlyWiki (e.g. tag trees).
-
-Not every tiddler bundled in a plugin is named after it. A plugin can also ship:
-
-* tiddlers named ''under its own title'' (`<plugin-title>/modules/foo`, `<plugin-title>/language/en-GB/`, …)
-* shadow tiddlers that ''override a core tiddler'' outright (same title as a `$:/core/…` tiddler — this very plugin does exactly that with `$:/core/ui/PluginInfo/Default/contents`)
-* shadow tiddlers that are ''neither'' — arbitrary global tiddlers (a new `$:/tags/…` entry, a standalone `$:/config/…`, …) that don't collide with anything and aren't nested under the plugin's own title
-
-The Contents tab now shows one tree per group, each only rendered when non-empty:
-
-# ''Plugin tiddlers'' — tiddlers nested under `<plugin-title>/`
-# ''Core overrides'' — tiddlers that replace a `$:/core` tiddler
-# ''Other shadow tiddlers'' — everything else
-
-!! How it works
-
-This plugin overrides a single shadow tiddler: `$:/core/ui/PluginInfo/Default/contents`. It computes the three groups with `plugintiddlers[]` (the full list of tiddlers bundled in the plugin, regardless of naming) and a mix of `-` (except) and `:intersection` filter runs against `[[$:/core]plugintiddlers[]]`, then renders each group with a small local `pit-tree` macro (defined in `macros/tree.tid`) — a copy of the core `tree` macro's recursive branch/leaf logic, generalised to walk an arbitrary title list (via `enlist`) instead of the hardcoded `all[shadows+tiddlers]`. The first group reuses the unmodified core `tree` macro directly, since it already supports filtering by a title prefix.
-
-⚠️ Because this is a shadow tiddler override, it is ''global'': once installed, it changes the Contents tab for ''every'' plugin's info panel in the wiki — not just for this plugin.
-
-!! Requirements
-
-TiddlyWiki >= 5.2.0. No other dependency — it only relies on the `tree` macro shipped with the TiddlyWiki core.
-
----
-
-!! Credits
-
-Developed with assistance from Anthropic Claude for code, review, and documentation.
-
----
-
-!! License
-
-MIT — see `LICENSE`.
+\whitespace trim
+<$let _lang={{{ [[$:/language]get[text]get[name]else[en-GB]] }}}>
+<$transclude $mode="block" $tiddler={{{ [[$:/plugins/nikorion/plugin-info-tree/language/]addsuffix<_lang>addsuffix[/readme]] }}}>
+<$transclude $mode="block" $tiddler="$:/plugins/nikorion/plugin-info-tree/language/en-GB/readme"/>
+</$transclude>
+</$let>

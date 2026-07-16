@@ -1,0 +1,40 @@
+title: $:/plugins/nikorion/plugin-info-tree/language/fr-FR/readme
+type: text/vnd.tiddlywiki
+
+!! Aperçu
+
+Remplace la liste plate de tiddlers de l'onglet « Contents » du panneau d'info d'un plugin par jusqu'à trois vues arborescentes hiérarchiques, groupées par segments de chemin séparés par `/` — le même style d'arbre utilisé ailleurs dans TiddlyWiki (ex. les arbres de tags).
+
+Tous les tiddlers embarqués dans un plugin ne sont pas nommés d'après lui. Un plugin peut aussi livrer :
+
+* des tiddlers nommés ''sous son propre titre'' (`<titre-du-plugin>/modules/foo`, `<titre-du-plugin>/language/en-GB/`, …)
+* des shadow tiddlers qui ''remplacent purement et simplement un tiddler core'' (même titre qu'un tiddler `$:/core/…` — ce plugin fait exactement ça avec `$:/core/ui/PluginInfo/Default/contents`)
+* des shadow tiddlers qui ne sont ''ni l'un ni l'autre'' — des tiddlers globaux arbitraires (une nouvelle entrée `$:/tags/…`, un `$:/config/…` autonome, …) qui n'entrent en collision avec rien et ne sont pas imbriqués sous le titre du plugin
+
+L'onglet Contents affiche désormais un arbre par groupe, chacun rendu uniquement s'il n'est pas vide :
+
+# ''Tiddlers du plugin'' — tiddlers imbriqués sous `<titre-du-plugin>/`
+# ''Surcharges core'' — tiddlers qui remplacent un tiddler `$:/core`
+# ''Autres shadow tiddlers'' — tout le reste
+
+!! Fonctionnement
+
+Ce plugin surcharge un seul shadow tiddler : `$:/core/ui/PluginInfo/Default/contents`. Il calcule les trois groupes avec `plugintiddlers[]` (la liste complète des tiddlers embarqués dans le plugin, quel que soit leur nommage) et une combinaison de runs de filtre `-` (except) et `:intersection` contre `[[$:/core]plugintiddlers[]]`, puis rend chaque groupe avec une petite macro locale `pit-tree` (définie dans `macros/tree.tid`) — une copie de la logique récursive branche/feuille de la macro core `tree`, généralisée pour parcourir une liste de titres arbitraire (via `enlist`) au lieu du `all[shadows+tiddlers]` codé en dur. Le premier groupe réutilise directement la macro core `tree` non modifiée, puisqu'elle prend déjà en charge le filtrage par préfixe de titre.
+
+⚠️ Comme il s'agit d'une surcharge de shadow tiddler, l'effet est ''global'' : une fois installé, ce plugin change l'onglet Contents pour ''tous'' les panneaux d'info de plugin du wiki — pas seulement pour lui-même.
+
+!! Prérequis
+
+TiddlyWiki >= 5.2.0. Aucune autre dépendance — il ne repose que sur la macro `tree` livrée avec le core de TiddlyWiki.
+
+---
+
+!! Crédits
+
+Développé avec l'aide d'Anthropic Claude pour le code, la relecture et la documentation.
+
+---
+
+!! Licence
+
+MIT — voir `LICENSE`.
