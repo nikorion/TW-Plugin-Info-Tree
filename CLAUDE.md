@@ -1,7 +1,9 @@
 # TW-Plugin-Info-Tree — contexte projet pour Claude
 
+> **Avant toute tâche sur ce plugin, consulter d'abord le `CLAUDE.md` du workspace** (`../CLAUDE.md`) et ses `guides/` : outillage de dev commun (pnpm, `dev.cjs`/HMR, Ctrl+C, git push), pièges PowerShell/Windows, `publishFilter`, symlink. Ci-dessous : uniquement le spécifique à TW-Plugin-Info-Tree.
+
 ## Ce que c'est
-Plugin TiddlyWiki (`$:/plugins/nikorion/plugin-info-tree`) qui remplace l'onglet "Contents" du panneau d'info des plugins par une vue arborescente au lieu de la liste plate par défaut. Auteur : nikorion.
+Plugin TiddlyWiki (`$:/plugins/nikorion/plugin-info-tree`) qui remplace l'onglet "Contents" du panneau d'info des plugins par une vue arborescente au lieu de la liste plate par défaut. Auteur : nikorion. **Pas de JS de plugin, pas d'ESLint** : que des tiddlers wikitext/JSON.
 
 ## Structure
 ```
@@ -23,9 +25,6 @@ wiki/                            ← wiki TW de développement
 
 dist/                            ← généré par pnpm build, gitignored
 docs/                             ← TW-Plugin-Info-Tree-Wiki.html généré par pnpm build
-scripts/
-  dev.cjs                         ← orchestrateur pnpm dev (résout les ports, spawn nodemon + dev-hmr)
-  dev-hmr.cjs                     ← serveur SSE de HMR de contenu (reboot/reload sur changement de plugin.info)
 ```
 
 ## Ce que fait le plugin
@@ -46,37 +45,7 @@ Ils sont rendus par une macro locale `pit-tree` (`macros/tree.tid`) — une copi
 
 ⚠️ **Effet de bord global** : comme c'est un override de shadow tiddler core, il s'applique à ''tous'' les plugins inspectés dans le wiki, pas seulement à ce plugin. À rappeler dans la doc pour quiconque l'installe.
 
-## Build html (docs/) — publishFilter
-`--rendertiddler $:/core/save/all` embarque tout le store de tiddlers chargé dans wiki, pas seulement le plugin. La target `html` passe la variable `publishFilter` (mécanisme core du bouton "Download full wiki") en args supplémentaires de `--rendertiddler` pour exclure les tiddlers de dev :
-```json
-"--rendertiddler", "$:/core/save/all", "TW-Plugin-Info-Tree-Wiki.html", "text/plain", "",
-"publishFilter", "-[[$:/dev/hmr]] -[[$:/config/dev/hmr-port]] -[[$:/config/SyncFilter]] -[[$:/plugins/wikilabs/link-to-tabs]] -[[$:/plugins/kookma/commander]] -[[$:/plugins/oeyoews/tiddlywiki-codemirror-6]]"
-```
-Le `""` avant `publishFilter` est le slot `template` (inutilisé, à laisser vide sinon les index se décalent). Les tiddlers de dev du HMR sont exclus ; `link-to-tabs`, `commander` et `codemirror-6` sont installés dans `wiki/tiddlers/` (glisser-déposé, confort de dev) mais exclus du build — `katex` est gardé intentionnellement, c'est le plugin "riche" utilisé pour démontrer la vue arborescente.
-
-## Workflow dev
-```
-pnpm install
-pnpm dev      # TW sur :8080 (défaut ; port libre si occupé) + HMR SSE — l'URL est affichée
-pnpm build    # génère dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-Info-Tree-Wiki.html
-```
-
-`pnpm dev` lance `scripts/dev.cjs`, orchestrateur (calqué sur TW-Hover-Tilt, zéro dépendance ajoutée) : il résout le port TW (défaut **8080**, sinon un port libre si occupé) et le port SSE du HMR (défaut **35730**, même logique) — « move aside » — écrit le port SSE dans le tiddler git-ignoré `$:/config/dev/hmr-port` (lu par le client navigateur), puis lance en parallèle (spawn direct, plus de `concurrently`) **nodemon** (reboote TW sur changement de `plugin.info` seulement) et **`dev-hmr.cjs`** (serveur SSE de HMR de contenu : les `.tid`, dont `macros/tree.tid` et l'override, sont poussés à chaud, état préservé). Le garde-fou `$:/config/SyncFilter` (`wiki/tiddlers/system/$__config_SyncFilter.tid`) tient le préfixe du plugin hors du sync tiddlyweb pour que les overrides HMR ne soient pas persistés. Principe détaillé : `../guides/hmr-tiddlywiki.md`.
-
-Pas de JS de plugin, pas d'ESLint : ce plugin ne contient que des tiddlers wikitext/JSON. Pour tester visuellement le rendu, ouvrir le panneau de contrôle → Plugins → un plugin avec plusieurs tiddlers (ex. KaTeX, chargé dans le wiki de dev) → onglet Contents.
-
-## Fichiers de config
-- [package.json](package.json) — scripts pnpm, dépendances dev
-- [scripts/dev.cjs](scripts/dev.cjs) — orchestrateur `pnpm dev` : résolution des ports (défaut/libre) + spawn nodemon & dev-hmr
-- [scripts/dev-hmr.cjs](scripts/dev-hmr.cjs) — serveur SSE de HMR de contenu (+ reboot/reload sur changement de `plugin.info`)
-- [nodemon.json](nodemon.json) — watch `src/plugin-info-tree/plugin.info` seulement ; port de fallback standalone (`dev.cjs` surcharge le port réel)
-- [wiki/tiddlywiki.info](wiki/tiddlywiki.info) — plugins actifs, pluginPath: `../src`
-
-## Symlink TIDDLYWIKI_PLUGIN_PATH
-```
-C:\Users\Nico\tw\plugins\nikorion\plugin-info-tree → D:\projets\devops\tw\plugins\nikorion\TW-Plugin-Info-Tree\src\plugin-info-tree
-```
-
-## Points d'attention Windows
-- `pnpm dev` nécessite **deux Ctrl+C** pour quitter (comportement normal sur Windows).
-- Voir le CLAUDE.md de TW-Math (`D:\projets\devops\tw\plugins\nikorion\TW-Math\CLAUDE.md`) pour les pièges PowerShell : BOM UTF-8, fins de ligne CRLF, caractères Unicode, etc.
+## Spécificités dev
+- `pnpm build` → `dist/TW-Plugin-Info-Tree-Plugin.json` + `docs/TW-Plugin-Info-Tree-Wiki.html`. Build HTML `publishFilter` (`../guides/build-html-publishfilter.md`) : `katex` gardé intentionnellement (plugin "riche" démontrant la vue arborescente).
+- HMR : les `.tid` (dont `macros/tree.tid` et l'override) sont poussés à chaud ; seul `plugin.info` reboote — `nodemon.json` ne surveille que lui.
+- Pour tester visuellement le rendu : panneau de contrôle → Plugins → un plugin avec plusieurs tiddlers (ex. KaTeX, chargé dans le wiki de dev) → onglet Contents.

@@ -11,5 +11,5 @@ tags: $:/tags/Global
 \end
 
 \function plugin-info-tree-lingo-text(title)
-[[$:/language]get[text]get[name]else[en-GB]addprefix[$:/plugins/nikorion/plugin-info-tree/language/]addsuffix[/]addsuffix<title>get[text]] :else[[$:/plugins/nikorion/plugin-info-tree/language/en-GB/]addsuffix<title>get[text]] :else<title>
+[[$:/language]get[text]get[name]else[en-GB]addprefix[$:/plugins/nikorion/plugin-info-tree/language/]addsuffix[/]addsuffix<title>get[text]] :else[[$:/plugins/nikorion/plugin-info-tree/language/en-GB/]addsuffix<title>get[text]] :else[<title>]
 \end
