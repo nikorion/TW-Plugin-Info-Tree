@@ -7,11 +7,11 @@ title: $:/core/ui/PluginInfo/Default/contents
 
 <h4><<plugin-info-tree-lingo-text Tree/PluginTiddlers>></h4>
 
-<$transclude $variable="tree" prefix=<<prefixText>>/>
+<<tree prefix=<<prefixText>> >>
 
-<$macrocall $name="pit-tree" source=<<core-overrides>> label=<<plugin-info-tree-lingo-text Tree/CoreOverrides>>/>
+<<pit-tree source=<<core-overrides>> label=<<plugin-info-tree-lingo-text Tree/CoreOverrides>> >>
 
-<$macrocall $name="pit-tree" source=<<other-shadows>> label=<<plugin-info-tree-lingo-text Tree/OtherShadowTiddlers>>/>
+<<pit-tree source=<<other-shadows>> label=<<plugin-info-tree-lingo-text Tree/OtherShadowTiddlers>> >>
 
 </$let>
 </$let>

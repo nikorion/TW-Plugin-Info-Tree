@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 <li>
 <$list filter="[<__prefix__>addsuffix<__chunk__>is[shadow]] [<__prefix__>addsuffix<__chunk__>is[tiddler]]" variable="full-title">
 <$list filter="[<full-title>removeprefix<__prefix__>]" variable="chunk">
-<span>{{$:/core/images/file}}</span>&#32;<$macrocall $name="pit-leaf-link" full-title=<<full-title>> chunk=<<chunk>>/>
+<span>{{$:/core/images/file}}</span>&#32;<<pit-leaf-link full-title=<<full-title>> chunk=<<chunk>> >>
 </$list>
 </$list>
 </li>
@@ -46,10 +46,10 @@ type: text/vnd.tiddlywiki
 \whitespace trim
 <ol>
 <$list filter="[enlist<__source__>removeprefix<__prefix__>splitbefore<__separator__>sort[]!suffix<__separator__>]" variable="chunk">
-<$macrocall $name="pit-leaf-node" prefix=<<__prefix__>> chunk=<<chunk>>/>
+<<pit-leaf-node prefix=<<__prefix__>> chunk=<<chunk>> >>
 </$list>
 <$list filter="[enlist<__source__>removeprefix<__prefix__>splitbefore<__separator__>sort[]suffix<__separator__>]" variable="chunk">
-<$macrocall $name="pit-branch-node" source=<<__source__>> prefix=<<__prefix__>> chunk=<<chunk>> separator=<<__separator__>>/>
+<<pit-branch-node source=<<__source__>> prefix=<<__prefix__>> chunk=<<chunk>> separator=<<__separator__>> >>
 </$list>
 </ol>
 \end
@@ -62,7 +62,7 @@ type: text/vnd.tiddlywiki
 <h4><$text text=<<__label__>>/></h4>
 </$list>
 <div>
-<$macrocall $name="pit-tree-node" source=<<__source__>> prefix=<<__prefix__>> separator=<<__separator__>>/>
+<<pit-tree-node source=<<__source__>> prefix=<<__prefix__>> separator=<<__separator__>> >>
 </div>
 </div>
 </$list>
