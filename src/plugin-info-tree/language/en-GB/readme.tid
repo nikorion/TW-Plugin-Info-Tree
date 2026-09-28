@@ -19,7 +19,7 @@ The Contents tab now shows one tree per group, each only rendered when non-empty
 
 !! How it works
 
-This plugin overrides a single shadow tiddler: `$:/core/ui/PluginInfo/Default/contents`. It computes the three groups with `plugintiddlers[]` (the full list of tiddlers bundled in the plugin, regardless of naming) and a mix of `-` (except) and `:intersection` filter runs against `[[$:/core]plugintiddlers[]]`, then renders each group with a small local `pit-tree` macro (defined in `macros/tree.tid`) — a copy of the core `tree` macro's recursive branch/leaf logic, generalised to walk an arbitrary title list (via `enlist`) instead of the hardcoded `all[shadows+tiddlers]`. The first group reuses the unmodified core `tree` macro directly, since it already supports filtering by a title prefix.
+This plugin overrides a single shadow tiddler: `$:/core/ui/PluginInfo/Default/contents`. It computes the three groups with `plugintiddlers[]` (the full list of tiddlers bundled in the plugin, regardless of naming) and a mix of `-` (except) and `:intersection` filter runs against `[[$:/core]plugintiddlers[]]`, then renders each group with a small local `nk-tree` macro (defined in `macros/tree.tid`) — a copy of the core `tree` macro's recursive branch/leaf logic, generalised to walk an arbitrary title list (via `enlist`) instead of the hardcoded `all[shadows+tiddlers]`. The first group reuses the unmodified core `tree` macro directly, since it already supports filtering by a title prefix.
 
 ⚠️ Because this is a shadow tiddler override, it is ''global'': once installed, it changes the Contents tab for ''every'' plugin's info panel in the wiki — not just for this plugin.
 

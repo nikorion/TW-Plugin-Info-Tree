@@ -9,9 +9,9 @@ title: $:/core/ui/PluginInfo/Default/contents
 
 <<tree prefix=<<prefixText>> >>
 
-<<pit-tree source=<<core-overrides>> label=<<plugin-info-tree-lingo-text Tree/CoreOverrides>> >>
+<<nk-tree source=<<core-overrides>> label=<<plugin-info-tree-lingo-text Tree/CoreOverrides>> >>
 
-<<pit-tree source=<<other-shadows>> label=<<plugin-info-tree-lingo-text Tree/OtherShadowTiddlers>> >>
+<<nk-tree source=<<other-shadows>> label=<<plugin-info-tree-lingo-text Tree/OtherShadowTiddlers>> >>
 
 </$let>
 </$let>

@@ -9,7 +9,7 @@ Plugin TiddlyWiki (`$:/plugins/nikorion/plugin-info-tree`) qui remplace l'onglet
 ```
 src/plugin-info-tree/            ← sources du plugin (seul dossier à toucher)
   plugin-info-override.tid       ← override shadow de $:/core/ui/PluginInfo/Default/contents
-  macros/tree.tid                 ← macros pit-tree / pit-tree-node / pit-branch-node / pit-leaf-node
+  macros/tree.tid                 ← macros nk-tree / nk-tree-node / nk-branch-node / nk-leaf-node
   readme.tid
   licence.tid
   history.tid
@@ -41,7 +41,7 @@ core-overrides = [<currentTiddler>plugintiddlers[]] -[prefix<prefixText>] :inter
 other-shadows  = [<currentTiddler>plugintiddlers[]] -[prefix<prefixText>] -[[$:/core]plugintiddlers[]]
 ```
 
-Ils sont rendus par une macro locale `pit-tree` (`macros/tree.tid`) — une copie de la logique récursive branch/leaf de la macro core `tree`, généralisée pour parcourir une liste de titres arbitraire via `enlist<source>` au lieu du filtre figé `all[shadows+tiddlers]`. Le groupe 1 continue d'utiliser directement la macro core `tree`, qui gère déjà le filtrage par préfixe nativement.
+Ils sont rendus par une macro locale `nk-tree` (`macros/tree.tid`) — une copie de la logique récursive branch/leaf de la macro core `tree`, généralisée pour parcourir une liste de titres arbitraire via `enlist<source>` au lieu du filtre figé `all[shadows+tiddlers]`. Le groupe 1 continue d'utiliser directement la macro core `tree`, qui gère déjà le filtrage par préfixe nativement.
 
 ⚠️ **Effet de bord global** : comme c'est un override de shadow tiddler core, il s'applique à ''tous'' les plugins inspectés dans le wiki, pas seulement à ce plugin. À rappeler dans la doc pour quiconque l'installe.
 

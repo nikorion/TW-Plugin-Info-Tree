@@ -4,22 +4,22 @@ type: text/vnd.tiddlywiki
 
 \whitespace trim
 
-\define pit-leaf-link(full-title,chunk)
+\define nk-leaf-link(full-title,chunk)
 <$link to=<<__full-title__>>><$text text=<<__chunk__>>/></$link>
 \end
 
-\define pit-leaf-node(prefix,chunk)
+\define nk-leaf-node(prefix,chunk)
 \whitespace trim
 <li>
 <$list filter="[<__prefix__>addsuffix<__chunk__>is[shadow]] [<__prefix__>addsuffix<__chunk__>is[tiddler]]" variable="full-title">
 <$list filter="[<full-title>removeprefix<__prefix__>]" variable="chunk">
-<span>{{$:/core/images/file}}</span>&#32;<<pit-leaf-link full-title=<<full-title>> chunk=<<chunk>> >>
+<span>{{$:/core/images/file}}</span>&#32;<<nk-leaf-link full-title=<<full-title>> chunk=<<chunk>> >>
 </$list>
 </$list>
 </li>
 \end
 
-\define pit-branch-node(source,prefix,chunk,separator: "/")
+\define nk-branch-node(source,prefix,chunk,separator: "/")
 \whitespace trim
 <li>
 <$set name="reveal-state" value={{{ [[$:/state/tree/plugin-info-tree/]addsuffix<__prefix__>addsuffix<__chunk__>] }}}>
@@ -36,33 +36,33 @@ type: text/vnd.tiddlywiki
 &#32;
 <span>(<$count filter="[enlist<__source__>removeprefix<__prefix__>removeprefix<__chunk__>] -[<__prefix__>addsuffix<__chunk__>]"/>)</span>
 <$reveal type="match" stateTitle=<<reveal-state>> text="show">
-<$macrocall $name="pit-tree-node" source=<<__source__>> prefix={{{ [<__prefix__>addsuffix<__chunk__>] }}} separator=<<__separator__>>/>
+<$macrocall $name="nk-tree-node" source=<<__source__>> prefix={{{ [<__prefix__>addsuffix<__chunk__>] }}} separator=<<__separator__>>/>
 </$reveal>
 </$set>
 </li>
 \end
 
-\define pit-tree-node(source,prefix,separator: "/")
+\define nk-tree-node(source,prefix,separator: "/")
 \whitespace trim
 <ol>
 <$list filter="[enlist<__source__>removeprefix<__prefix__>splitbefore<__separator__>sort[]!suffix<__separator__>]" variable="chunk">
-<<pit-leaf-node prefix=<<__prefix__>> chunk=<<chunk>> >>
+<<nk-leaf-node prefix=<<__prefix__>> chunk=<<chunk>> >>
 </$list>
 <$list filter="[enlist<__source__>removeprefix<__prefix__>splitbefore<__separator__>sort[]suffix<__separator__>]" variable="chunk">
-<<pit-branch-node source=<<__source__>> prefix=<<__prefix__>> chunk=<<chunk>> separator=<<__separator__>> >>
+<<nk-branch-node source=<<__source__>> prefix=<<__prefix__>> chunk=<<chunk>> separator=<<__separator__>> >>
 </$list>
 </ol>
 \end
 
-\define pit-tree(source,prefix: "$:/",separator: "/",label: "")
+\define nk-tree(source,prefix: "$:/",separator: "/",label: "")
 \whitespace trim
-<$list filter="[enlist<__source__>limit[1]]" variable="pit-ignore">
-<div class="tc-tree pit-tree">
-<$list filter="[<__label__>!is[blank]]" variable="pit-ignore">
+<$list filter="[enlist<__source__>limit[1]]" variable="nk-ignore">
+<div class="tc-tree nk-tree">
+<$list filter="[<__label__>!is[blank]]" variable="nk-ignore">
 <h4><$text text=<<__label__>>/></h4>
 </$list>
 <div>
-<<pit-tree-node source=<<__source__>> prefix=<<__prefix__>> separator=<<__separator__>> >>
+<<nk-tree-node source=<<__source__>> prefix=<<__prefix__>> separator=<<__separator__>> >>
 </div>
 </div>
 </$list>
