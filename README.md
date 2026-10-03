@@ -9,6 +9,19 @@ A TiddlyWiki plugin that replaces the flat tiddler list in the plugin info panel
 
 ---
 
+## Contents
+
+- [Overview](#overview)
+- [Installation](#installation)
+- [Development](#development)
+- [Files](#files)
+- [Version history](#version-history)
+  - [v0.1.0](#v010)
+- [Credits](#credits)
+- [License](#license)
+
+---
+
 ## Overview
 
 By default, the "Contents" tab of a plugin's info panel (control panel → Plugins → *pick a plugin* → Contents) lists every tiddler it contains as a flat alphabetical list. For plugins with many tiddlers organised under path-like titles (`plugin-title/modules/foo`, `plugin-title/language/en-GB/`, …), that flat list gets hard to scan.
@@ -17,6 +30,8 @@ This plugin overrides the shadow tiddler `$:/core/ui/PluginInfo/Default/contents
 
 > ⚠️ This is a **global** shadow override: once installed, it changes the Contents tab for every plugin's info panel in the wiki — not just for one specific plugin.
 
+[↑ Back to contents](#contents)
+
 ---
 
 ## Installation
@@ -24,6 +39,8 @@ This plugin overrides the shadow tiddler `$:/core/ui/PluginInfo/Default/contents
 1. Download `TW-Plugin-Info-Tree-Plugin.json` from the [latest release](https://github.com/nikorion/TW-Plugin-Info-Tree/releases/latest)
 2. Drag and drop it into your TiddlyWiki (≥ 5.2.0)
 3. Save and reload
+
+[↑ Back to contents](#contents)
 
 ---
 
@@ -37,6 +54,8 @@ pnpm build    # generates dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-
 
 Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddlywiki/katex` so there's a plugin with enough nested tiddlers to make the tree view worth looking at while developing.
 
+[↑ Back to contents](#contents)
+
 ---
 
 ## Files
@@ -47,6 +66,8 @@ Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddl
 | `src/plugin-info-tree/plugin-info-override.tid` | Shadow override of `$:/core/ui/PluginInfo/Default/contents` |
 | `src/plugin-info-tree/readme.tid` / `licence.tid` / `history.tid` | Plugin info panel tabs |
 
+[↑ Back to contents](#contents)
+
 ---
 
 ## Version history
@@ -55,14 +76,20 @@ Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddl
 
 Initial release.
 
+[↑ Back to contents](#contents)
+
 ---
 
 ## Credits
 
 Developed with assistance from Anthropic Claude for code, review, and documentation.
 
+[↑ Back to contents](#contents)
+
 ---
 
 ## License
 
 MIT License — see `LICENSE`
+
+[↑ Back to contents](#contents)
