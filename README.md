@@ -30,7 +30,7 @@ This plugin overrides the shadow tiddler `$:/core/ui/PluginInfo/Default/contents
 
 > ⚠️ This is a **global** shadow override: once installed, it changes the Contents tab for every plugin's info panel in the wiki — not just for one specific plugin.
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")
 
 ---
 
@@ -40,7 +40,7 @@ This plugin overrides the shadow tiddler `$:/core/ui/PluginInfo/Default/contents
 2. Drag and drop it into your TiddlyWiki (≥ 5.2.0)
 3. Save and reload
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")
 
 ---
 
@@ -54,7 +54,7 @@ pnpm build    # generates dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-
 
 Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddlywiki/katex` so there's a plugin with enough nested tiddlers to make the tree view worth looking at while developing.
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")
 
 ---
 
@@ -66,7 +66,7 @@ Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddl
 | `src/plugin-info-tree/plugin-info-override.tid` | Shadow override of `$:/core/ui/PluginInfo/Default/contents` |
 | `src/plugin-info-tree/readme.tid` / `licence.tid` / `history.tid` | Plugin info panel tabs |
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")
 
 ---
 
@@ -76,7 +76,7 @@ Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddl
 
 Initial release.
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")
 
 ---
 
@@ -84,7 +84,7 @@ Initial release.
 
 Developed with assistance from Anthropic Claude for code, review, and documentation.
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")
 
 ---
 
@@ -92,4 +92,4 @@ Developed with assistance from Anthropic Claude for code, review, and documentat
 
 MIT License — see `LICENSE`
 
-[↑ Back to contents](#contents)
+[↑](#contents "Back to contents")

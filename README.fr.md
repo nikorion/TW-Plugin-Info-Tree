@@ -30,7 +30,7 @@ Ce plugin surcharge le shadow tiddler `$:/core/ui/PluginInfo/Default/contents` p
 
 > ⚠️ C'est une surcharge **globale** d'un shadow : une fois installé, il modifie l'onglet Contents du panneau d'information de tous les plugins du wiki — pas seulement d'un plugin en particulier.
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
 
 ---
 
@@ -40,7 +40,7 @@ Ce plugin surcharge le shadow tiddler `$:/core/ui/PluginInfo/Default/contents` p
 2. Le glisser-déposer dans votre TiddlyWiki (≥ 5.2.0)
 3. Enregistrer et recharger
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
 
 ---
 
@@ -54,7 +54,7 @@ pnpm build    # génère dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-I
 
 Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge aussi `tiddlywiki/katex`, pour disposer pendant le développement d'un plugin aux tiddlers suffisamment imbriqués pour que l'arborescence vaille le coup d'œil.
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
 
 ---
 
@@ -66,7 +66,7 @@ Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge a
 | `src/plugin-info-tree/plugin-info-override.tid` | Surcharge du shadow `$:/core/ui/PluginInfo/Default/contents` |
 | `src/plugin-info-tree/readme.tid` / `licence.tid` / `history.tid` | Onglets du panneau d'information du plugin |
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
 
 ---
 
@@ -76,7 +76,7 @@ Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge a
 
 Première version.
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
 
 ---
 
@@ -84,7 +84,7 @@ Première version.
 
 Développé avec l'aide d'Anthropic Claude pour le code, la revue et la documentation.
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
 
 ---
 
@@ -92,4 +92,4 @@ Développé avec l'aide d'Anthropic Claude pour le code, la revue et la document
 
 Licence MIT — voir `LICENSE`
 
-[↑ Retour au sommaire](#sommaire)
+[↑](#sommaire "Retour au sommaire")
