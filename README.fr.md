@@ -7,21 +7,6 @@
 
 Un plugin TiddlyWiki qui remplace la liste à plat des tiddlers de l'onglet **Contents** du panneau d'information d'un plugin par une arborescence.
 
----
-
-## Sommaire
-
-- [Présentation](#présentation)
-- [Installation](#installation)
-- [Développement](#développement)
-- [Fichiers](#fichiers)
-- [Historique des versions](#historique-des-versions)
-  - [v0.1.0](#v010)
-- [Crédits](#crédits)
-- [Licence](#licence)
-
----
-
 ## Présentation
 
 Par défaut, l'onglet « Contents » du panneau d'information d'un plugin (panneau de contrôle → Plugins → *choisir un plugin* → Contents) liste tous les tiddlers qu'il contient sous forme de liste alphabétique à plat. Pour les plugins comptant de nombreux tiddlers rangés sous des titres en forme de chemin (`plugin-title/modules/foo`, `plugin-title/language/en-GB/`, …), cette liste devient difficile à parcourir.
@@ -30,19 +15,11 @@ Ce plugin surcharge le shadow tiddler `$:/core/ui/PluginInfo/Default/contents` p
 
 > ⚠️ C'est une surcharge **globale** d'un shadow : une fois installé, il modifie l'onglet Contents du panneau d'information de tous les plugins du wiki — pas seulement d'un plugin en particulier.
 
-[↑](#sommaire "Retour au sommaire")
-
----
-
 ## Installation
 
 1. Télécharger `TW-Plugin-Info-Tree-Plugin.json` depuis la [dernière version](https://github.com/nikorion/TW-Plugin-Info-Tree/releases/latest)
 2. Le glisser-déposer dans votre TiddlyWiki (≥ 5.2.0)
 3. Enregistrer et recharger
-
-[↑](#sommaire "Retour au sommaire")
-
----
 
 ## Développement
 
@@ -54,10 +31,6 @@ pnpm build    # génère dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-I
 
 Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge aussi `tiddlywiki/katex`, pour disposer pendant le développement d'un plugin aux tiddlers suffisamment imbriqués pour que l'arborescence vaille le coup d'œil.
 
-[↑](#sommaire "Retour au sommaire")
-
----
-
 ## Fichiers
 
 | Fichier | Rôle |
@@ -66,30 +39,16 @@ Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge a
 | `src/plugin-info-tree/plugin-info-override.tid` | Surcharge du shadow `$:/core/ui/PluginInfo/Default/contents` |
 | `src/plugin-info-tree/readme.tid` / `licence.tid` / `history.tid` | Onglets du panneau d'information du plugin |
 
-[↑](#sommaire "Retour au sommaire")
-
----
-
 ## Historique des versions
 
 ### v0.1.0
 
 Première version.
 
-[↑](#sommaire "Retour au sommaire")
-
----
-
 ## Crédits
 
 Développé avec l'aide d'Anthropic Claude pour le code, la revue et la documentation.
 
-[↑](#sommaire "Retour au sommaire")
-
----
-
 ## Licence
 
 Licence MIT — voir `LICENSE`
-
-[↑](#sommaire "Retour au sommaire")
