@@ -18,7 +18,6 @@ src/plugin-info-tree/            ← sources du plugin (seul dossier à toucher)
 wiki/                            ← wiki TW de développement
   tiddlywiki.info                ← plugins actifs (dont tiddlywiki/katex, pour avoir un plugin "riche" à inspecter), pluginPath: ../src
   tiddlers/
-    system/$__dev-hmr.tid
     system/$__config_SyncFilter.tid
     $__DefaultTiddlers.tid
     $__SiteTitle.tid / $__SiteSubtitle.tid
@@ -47,5 +46,5 @@ Ils sont rendus par une macro locale `nk-tree` (`macros/tree.tid`) — une copie
 
 ## Spécificités dev
 - `pnpm build` → `dist/TW-Plugin-Info-Tree-Plugin.json` + `docs/TW-Plugin-Info-Tree-Wiki.html`. Build HTML `publishFilter` (`../guides/build-html-publishfilter.md`) : `katex` gardé intentionnellement (plugin "riche" démontrant la vue arborescente).
-- HMR : les `.tid` (dont `macros/tree.tid` et l'override) sont poussés à chaud ; seul `plugin.info` reboote — `nodemon.json` ne surveille que lui.
+- HMR : les `.tid` (dont `macros/tree.tid` et l'override) sont poussés à chaud ; seul `plugin.info` reboote.
 - Pour tester visuellement le rendu : panneau de contrôle → Plugins → un plugin avec plusieurs tiddlers (ex. KaTeX, chargé dans le wiki de dev) → onglet Contents.

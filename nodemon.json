@@ -1,5 +1,0 @@
-{
-  "watch": ["src/plugin-info-tree/plugin.info"],
-  "ext": "info",
-  "exec": "tiddlywiki wiki --listen port=8080"
-}
