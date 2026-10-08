@@ -17,16 +17,23 @@ Ce plugin surcharge le shadow tiddler `$:/core/ui/PluginInfo/Default/contents` p
 
 ## Installation
 
-1. Télécharger `TW-Plugin-Info-Tree-Plugin.json` depuis la [dernière version](https://github.com/nikorion/TW-Plugin-Info-Tree/releases/latest)
-2. Le glisser-déposer dans votre TiddlyWiki (≥ 5.2.0)
-3. Enregistrer et recharger
+**Démo en ligne** : [https://nikorion.github.io/TW-Plugin-Info-Tree/](https://nikorion.github.io/TW-Plugin-Info-Tree/) — pour essayer le plugin avant de l'installer.
+
+**Depuis la bibliothèque de plugins nikorion** (TiddlyWiki propose ensuite chaque nouvelle version en mise à jour) :
+
+1. Dans votre wiki, créer un tiddler tagué `$:/tags/PluginLibrary`, avec un champ `url` valant `https://nikorion.github.io/tw-dev/library/index.html` et une `caption` comme `nikorion`.
+2. Ouvrir *Panneau de configuration → Plugins → Obtenir d'autres plugins*, choisir la bibliothèque nikorion et installer **Plugin Info Tree**.
+
+**À la main** : télécharger [`TW-Plugin-Info-Tree-Plugin.json`](https://nikorion.github.io/TW-Plugin-Info-Tree/TW-Plugin-Info-Tree-Plugin.json) et le glisser-déposer sur votre wiki.
+
+Nécessite TiddlyWiki ≥ 5.2.0.
 
 ## Développement
 
 ```
 pnpm install
 pnpm dev      # wiki de dev + rechargement à chaud ; l'URL (port libre aléatoire) s'affiche au démarrage
-pnpm build    # génère dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-Info-Tree-Wiki.html
+pnpm build    # dist/TW-Plugin-Info-Tree-Plugin.json + docs/ (wiki de démo, publié par la CI)
 ```
 
 Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge aussi `tiddlywiki/katex`, pour disposer pendant le développement d'un plugin aux tiddlers suffisamment imbriqués pour que l'arborescence vaille le coup d'œil.

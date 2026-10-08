@@ -23,7 +23,7 @@ wiki/                            ← wiki TW de développement
     $__SiteTitle.tid / $__SiteSubtitle.tid
 
 dist/                            ← généré par pnpm build, gitignored
-docs/                             ← TW-Plugin-Info-Tree-Wiki.html généré par pnpm build
+docs/                             ← démo générée par `pnpm build` (`index.html` + moteur externe), gitignorée, publiée par la CI
 ```
 
 ## Ce que fait le plugin
@@ -45,6 +45,6 @@ Ils sont rendus par une macro locale `nk-tree` (`macros/tree.tid`) — une copie
 ⚠️ **Effet de bord global** : comme c'est un override de shadow tiddler core, il s'applique à ''tous'' les plugins inspectés dans le wiki, pas seulement à ce plugin. À rappeler dans la doc pour quiconque l'installe.
 
 ## Spécificités dev
-- `pnpm build` → `dist/TW-Plugin-Info-Tree-Plugin.json` + `docs/TW-Plugin-Info-Tree-Wiki.html`. Build HTML `publishFilter` (`../guides/build-html-publishfilter.md`) : `katex` gardé intentionnellement (plugin "riche" démontrant la vue arborescente).
+- `pnpm build` → `dist/TW-Plugin-Info-Tree-Plugin.json` + démo `docs/` (publiée par la CI : `../guides/publication.md`). Démo `publishFilter` (`../guides/build-html-publishfilter.md`) : `katex` gardé intentionnellement (plugin "riche" démontrant la vue arborescente).
 - HMR : les `.tid` (dont `macros/tree.tid` et l'override) sont poussés à chaud ; seul `plugin.info` reboote.
 - Pour tester visuellement le rendu : panneau de contrôle → Plugins → un plugin avec plusieurs tiddlers (ex. KaTeX, chargé dans le wiki de dev) → onglet Contents.

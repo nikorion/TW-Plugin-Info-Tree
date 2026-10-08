@@ -17,16 +17,23 @@ This plugin overrides the shadow tiddler `$:/core/ui/PluginInfo/Default/contents
 
 ## Installation
 
-1. Download `TW-Plugin-Info-Tree-Plugin.json` from the [latest release](https://github.com/nikorion/TW-Plugin-Info-Tree/releases/latest)
-2. Drag and drop it into your TiddlyWiki (≥ 5.2.0)
-3. Save and reload
+**Live demo**: [https://nikorion.github.io/TW-Plugin-Info-Tree/](https://nikorion.github.io/TW-Plugin-Info-Tree/) — try the plugin before installing it.
+
+**From the nikorion plugin library** (TiddlyWiki then offers each new version as an update):
+
+1. In your wiki, create a tiddler tagged `$:/tags/PluginLibrary`, with a field `url` set to `https://nikorion.github.io/tw-dev/library/index.html` and a `caption` such as `nikorion`.
+2. Open *Control Panel → Plugins → Get more plugins*, choose the nikorion library and install **Plugin Info Tree**.
+
+**By hand**: download [`TW-Plugin-Info-Tree-Plugin.json`](https://nikorion.github.io/TW-Plugin-Info-Tree/TW-Plugin-Info-Tree-Plugin.json) and drag it onto your wiki.
+
+Requires TiddlyWiki ≥ 5.2.0.
 
 ## Development
 
 ```
 pnpm install
 pnpm dev      # dev wiki + hot reload; the URL (random free port) is printed on start
-pnpm build    # generates dist/TW-Plugin-Info-Tree-Plugin.json + docs/TW-Plugin-Info-Tree-Wiki.html
+pnpm build    # dist/TW-Plugin-Info-Tree-Plugin.json + docs/ (demo wiki, published by CI)
 ```
 
 Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddlywiki/katex` so there's a plugin with enough nested tiddlers to make the tree view worth looking at while developing.
