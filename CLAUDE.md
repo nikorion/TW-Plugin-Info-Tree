@@ -16,7 +16,7 @@ src/plugin-info-tree/            ← sources du plugin (seul dossier à toucher)
   plugin.info                    ← métadonnées du plugin (v0.1.0)
 
 wiki/                            ← wiki TW de développement
-  tiddlywiki.info                ← plugins actifs (dont tiddlywiki/katex, pour avoir un plugin "riche" à inspecter), pluginPath: ../src
+  tiddlywiki.info                ← plugins actifs (dont tiddlywiki/katex, pour avoir un plugin "riche" à inspecter)
   tiddlers/
     system/$__config_SyncFilter.tid
     $__DefaultTiddlers.tid
