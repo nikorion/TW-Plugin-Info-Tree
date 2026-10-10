@@ -5,6 +5,10 @@
     "tiddlywiki/tiddlyweb",
     "tiddlywiki/katex",
     "nikorion/plugin-info-tree",
+    "tiddlywiki/highlight",
+    "nikorion/scroll-layout",
+    "nikorion/math",
+    "nikorion/font-manager",
     "nikorion/detect-language"
   ],
   "themes": [
