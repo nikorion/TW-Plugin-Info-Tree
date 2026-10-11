@@ -27,20 +27,16 @@ docs/                             ← démo générée par `pnpm build` (`index.
 ```
 
 ## Ce que fait le plugin
-`plugin-info-override.tid` surcharge le tiddler shadow `$:/core/ui/PluginInfo/Default/contents` et affiche jusqu'à trois arbres, chacun affiché seulement s'il n'est pas vide :
+`plugin-info-override.tid` surcharge le tiddler shadow `$:/core/ui/PluginInfo/Default/contents` et affiche jusqu'à deux arbres, chacun précédé d'un titre wikitext `!!` et affiché seulement s'il n'est pas vide :
 
-1. **Plugin tiddlers** — via la macro core `tree`, préfixée par `<plugin-title>/` (inchangé depuis la v0.1.0)
-2. **Core overrides** — tiddlers du plugin (hors groupe 1) dont le titre correspond aussi à un tiddler de `$:/core`
-3. **Other shadow tiddlers** — tout le reste (ni dans le groupe 1, ni dans le groupe 2)
+1. **Shadows du plugin** (`Tree/PluginShadows`) — tiddlers sous `<plugin-title>/`, avec la ligne du préfixe en tête (`show-prefix`)
+2. **Surcharges** (`Tree/Overrides`) — tout le reste de `plugintiddlers[]` (surcharges du cœur ou de plugins tiers, tiddlers globaux ; fusion des anciens groupes « Core overrides » et « Other shadow tiddlers », 2026-10-11)
 
-Les groupes 2 et 3 sont calculés à partir de `[<currentTiddler>plugintiddlers[]]` (liste complète des tiddlers embarqués dans le plugin, peu importe leur nommage), puis filtrés avec des runs `-` (except) et `:intersection` contre `[[$:/core]plugintiddlers[]]` :
+Les deux listes sont calculées dans des `$let` avec `[<currentTiddler>plugintiddlers[]prefix<prefixText>]` / `!prefix<prefixText>` puis **`+[format:titlelist[]join[ ]]`** : **piège vécu 2026-10-11** — `{{{ filtre }}}` en attribut de `$let` ne garde que le premier résultat, donc sans ce sérialiseur l'arbre ne recevait qu'un titre.
 
-```
-core-overrides = [<currentTiddler>plugintiddlers[]] -[prefix<prefixText>] :intersection[[$:/core]plugintiddlers[]]
-other-shadows  = [<currentTiddler>plugintiddlers[]] -[prefix<prefixText>] -[[$:/core]plugintiddlers[]]
-```
+Rendu par la macro locale `nk-tree` (`macros/tree.tid`) — copie de la logique récursive branche/feuille de la macro core `tree`, généralisée à une liste de titres via `enlist<source>`. **Repli des dossiers à enfant unique** (2026-10-11) : `nk-branch-node` compte les fichiers et sous-dossiers directs ; s'il n'y a aucun fichier et exactement un sous-dossier, il se rappelle avec le chunk allongé (`themes/` + `tiddlywiki/` → `themes/tiddlywiki/`) — l'état de dépliage et le compteur utilisent le chunk final.
 
-Ils sont rendus par une macro locale `nk-tree` (`macros/tree.tid`) — une copie de la logique récursive branch/leaf de la macro core `tree`, généralisée pour parcourir une liste de titres arbitraire via `enlist<source>` au lieu du filtre figé `all[shadows+tiddlers]`. Le groupe 1 continue d'utiliser directement la macro core `tree`, qui gère déjà le filtrage par préfixe nativement.
+Groupes testables hors navigateur : wiki temporaire (voir le `CLAUDE.md` du workspace), en important aussi `$:/tags/Global` (`plugin-info-tree-lingo-text` est une fonction globale, sinon les titres sont vides).
 
 ⚠️ **Effet de bord global** : comme c'est un override de shadow tiddler core, il s'applique à ''tous'' les plugins inspectés dans le wiki, pas seulement à ce plugin. À rappeler dans la doc pour quiconque l'installe.
 

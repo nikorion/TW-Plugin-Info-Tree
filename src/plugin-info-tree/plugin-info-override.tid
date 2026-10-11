@@ -2,16 +2,12 @@ title: $:/core/ui/PluginInfo/Default/contents
 
 \whitespace trim
 <$let prefixText={{{ [<currentTiddler>addsuffix[/]] }}}>
-<$let core-overrides={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] :intersection[[$:/core]plugintiddlers[]] }}}>
-<$let other-shadows={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] -[[$:/core]plugintiddlers[]] }}}>
+<$let plugin-shadows={{{ [<currentTiddler>plugintiddlers[]prefix<prefixText>] +[format:titlelist[]join[ ]] }}}>
+<$let overrides={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] +[format:titlelist[]join[ ]] }}}>
 
-<h4><<plugin-info-tree-lingo-text Tree/PluginTiddlers>></h4>
+<<nk-tree source=<<plugin-shadows>> prefix=<<prefixText>> show-prefix="yes" label=<<plugin-info-tree-lingo-text Tree/PluginShadows>> >>
 
-<<tree prefix=<<prefixText>> >>
-
-<<nk-tree source=<<core-overrides>> label=<<plugin-info-tree-lingo-text Tree/CoreOverrides>> >>
-
-<<nk-tree source=<<other-shadows>> label=<<plugin-info-tree-lingo-text Tree/OtherShadowTiddlers>> >>
+<<nk-tree source=<<overrides>> label=<<plugin-info-tree-lingo-text Tree/Overrides>> >>
 
 </$let>
 </$let>

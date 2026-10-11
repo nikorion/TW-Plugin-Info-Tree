@@ -1,5 +1,4 @@
 title: $:/plugins/nikorion/plugin-info-tree/language/en-GB/
 
-Tree/PluginTiddlers: Plugin tiddlers
-Tree/CoreOverrides: Core overrides
-Tree/OtherShadowTiddlers: Other shadow tiddlers
+Tree/PluginShadows: Plugin shadows
+Tree/Overrides: Overrides

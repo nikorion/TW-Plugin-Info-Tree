@@ -21,6 +21,15 @@ type: text/vnd.tiddlywiki
 
 \define nk-branch-node(source,prefix,chunk,separator: "/")
 \whitespace trim
+<$let full={{{ [<__prefix__>addsuffix<__chunk__>] }}}
+	nfiles={{{ [enlist<__source__>removeprefix<full>splitbefore<__separator__>!suffix<__separator__>] +[count[]] }}}
+	nsubs={{{ [enlist<__source__>removeprefix<full>splitbefore<__separator__>suffix<__separator__>] +[count[]] }}}
+	only={{{ [enlist<__source__>removeprefix<full>splitbefore<__separator__>suffix<__separator__>] }}}
+	collapse={{{ [<nfiles>match[0]] :and[<nsubs>match[1]] }}}>
+<$list filter="[<collapse>match[1]]" variable="nk-ignore">
+<$macrocall $name="nk-branch-node" source=<<__source__>> prefix=<<__prefix__>> chunk={{{ [<__chunk__>addsuffix<only>] }}} separator=<<__separator__>>/>
+</$list>
+<$list filter="[<collapse>!match[1]]" variable="nk-ignore">
 <li>
 <$set name="reveal-state" value={{{ [[$:/state/tree/plugin-info-tree/]addsuffix<__prefix__>addsuffix<__chunk__>] }}}>
 <$reveal type="nomatch" stateTitle=<<reveal-state>> text="show">
@@ -40,6 +49,8 @@ type: text/vnd.tiddlywiki
 </$reveal>
 </$set>
 </li>
+</$list>
+</$let>
 \end
 
 \define nk-tree-node(source,prefix,separator: "/")
@@ -54,12 +65,17 @@ type: text/vnd.tiddlywiki
 </ol>
 \end
 
-\define nk-tree(source,prefix: "$:/",separator: "/",label: "")
+\define nk-tree(source,prefix: "$:/",separator: "/",label: "",show-prefix: "")
 \whitespace trim
 <$list filter="[enlist<__source__>limit[1]]" variable="nk-ignore">
 <div class="tc-tree nk-tree">
 <$list filter="[<__label__>!is[blank]]" variable="nk-ignore">
-<h4><$text text=<<__label__>>/></h4>
+
+!! <$text text=<<__label__>>/>
+
+</$list>
+<$list filter="[<__show-prefix__>!is[blank]]" variable="nk-ignore">
+<span><$text text=<<__prefix__>>/></span>
 </$list>
 <div>
 <<nk-tree-node source=<<__source__>> prefix=<<__prefix__>> separator=<<__separator__>> >>
