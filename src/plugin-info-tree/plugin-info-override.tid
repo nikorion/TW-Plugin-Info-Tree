@@ -5,6 +5,12 @@ title: $:/core/ui/PluginInfo/Default/contents
 <$let plugin-shadows={{{ [<currentTiddler>plugintiddlers[]prefix<prefixText>] +[format:titlelist[]join[ ]] }}}>
 <$let overrides={{{ [<currentTiddler>plugintiddlers[]!prefix<prefixText>] +[format:titlelist[]join[ ]] }}}>
 
+<$list filter="[<plugin-shadows>!is[blank]] [<overrides>!is[blank]] +[limit[1]]" variable="nk-ignore">
+
+! <<plugin-info-tree-lingo Tree/Heading>>
+
+</$list>
+
 <<nk-tree source=<<plugin-shadows>> prefix=<<prefixText>> show-prefix="yes" label=<<plugin-info-tree-lingo-text Tree/PluginShadows>> >>
 
 <<nk-tree source=<<overrides>> label=<<plugin-info-tree-lingo-text Tree/Overrides>> >>

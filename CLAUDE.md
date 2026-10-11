@@ -27,10 +27,10 @@ docs/                             ← démo générée par `pnpm build` (`index.
 ```
 
 ## Ce que fait le plugin
-`plugin-info-override.tid` surcharge le tiddler shadow `$:/core/ui/PluginInfo/Default/contents` et affiche jusqu'à deux arbres, chacun précédé d'un titre wikitext `!!` et affiché seulement s'il n'est pas vide :
+`plugin-info-override.tid` surcharge le tiddler shadow `$:/core/ui/PluginInfo/Default/contents` et affiche, sous un titre de premier niveau `!` (`Tree/Heading`, « Shadows embarqués dans le plugin », 2026-10-12), jusqu'à deux arbres, chacun précédé d'un titre wikitext `!!` et affiché seulement s'il n'est pas vide :
 
-1. **Shadows du plugin** (`Tree/PluginShadows`) — tiddlers sous `<plugin-title>/`, avec la ligne du préfixe en tête (`show-prefix`)
-2. **Surcharges** (`Tree/Overrides`) — tout le reste de `plugintiddlers[]` (surcharges du cœur ou de plugins tiers, tiddlers globaux ; fusion des anciens groupes « Core overrides » et « Other shadow tiddlers », 2026-10-11)
+1. **Tiddlers du namespace** (`Tree/PluginShadows`) — tiddlers sous `<plugin-title>/`, avec la ligne du préfixe en tête (`show-prefix`)
+2. **Autres** (`Tree/Overrides`) — tout le reste de `plugintiddlers[]` (surcharges du cœur ou de plugins tiers, tiddlers globaux ; fusion des anciens groupes « Core overrides » et « Other shadow tiddlers », 2026-10-11)
 
 Les deux listes sont calculées dans des `$let` avec `[<currentTiddler>plugintiddlers[]prefix<prefixText>]` / `!prefix<prefixText>` puis **`+[format:titlelist[]join[ ]]`** : **piège vécu 2026-10-11** — `{{{ filtre }}}` en attribut de `$let` ne garde que le premier résultat, donc sans ce sérialiseur l'arbre ne recevait qu'un titre.
 

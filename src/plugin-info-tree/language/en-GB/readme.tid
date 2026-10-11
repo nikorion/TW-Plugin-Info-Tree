@@ -10,10 +10,10 @@ Not every tiddler bundled in a plugin is named after it. A plugin can also ship:
 * tiddlers named ''under its own title'' (`<plugin-title>/modules/foo`, `<plugin-title>/language/en-GB/`, …)
 * shadow tiddlers ''outside its own title'' — overrides of a core or third-party tiddler (this very plugin does exactly that with `$:/core/ui/PluginInfo/Default/contents`) or arbitrary global tiddlers (a new `$:/tags/…` entry, a standalone `$:/config/…`, …)
 
-The Contents tab now shows one tree per group, with a `!!` heading, each only rendered when non-empty:
+The Contents tab now shows a top-level `!` heading (''Shadows shipped in the plugin''), then one tree per group, each with a `!!` heading and only rendered when non-empty:
 
-# ''Plugin shadows'' — tiddlers nested under `<plugin-title>/`
-# ''Overrides'' — everything else the plugin ships, outside its own title
+# ''Namespace tiddlers'' — tiddlers nested under `<plugin-title>/`
+# ''Other'' — everything else the plugin ships, outside its own title
 
 A folder whose only direct child is a single sub-folder is shown on one line (`themes/tiddlywiki/vanilla/`).
 

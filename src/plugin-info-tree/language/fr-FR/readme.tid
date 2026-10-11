@@ -10,10 +10,10 @@ Tous les tiddlers embarqués dans un plugin ne sont pas nommés d'après lui. Un
 * des tiddlers nommés ''sous son propre titre'' (`<titre-du-plugin>/modules/foo`, `<titre-du-plugin>/language/en-GB/`, …)
 * des shadow tiddlers ''hors de son propre titre'' — surcharges d'un tiddler core ou tiers (ce plugin fait exactement ça avec `$:/core/ui/PluginInfo/Default/contents`) ou tiddlers globaux arbitraires (une nouvelle entrée `$:/tags/…`, un `$:/config/…` autonome, …)
 
-L'onglet Contents affiche désormais un arbre par groupe, chacun précédé d'un titre `!!` et rendu uniquement s'il n'est pas vide :
+L'onglet Contents affiche désormais un titre de premier niveau `!` (''Shadows embarqués dans le plugin''), puis un arbre par groupe, chacun précédé d'un titre `!!` et rendu uniquement s'il n'est pas vide :
 
-# ''Shadows du plugin'' — tiddlers imbriqués sous `<titre-du-plugin>/`
-# ''Surcharges'' — tout le reste de ce que le plugin livre, hors de son propre titre
+# ''Tiddlers du namespace'' — tiddlers imbriqués sous `<titre-du-plugin>/`
+# ''Autres'' — tout le reste de ce que le plugin livre, hors de son propre titre
 
 Un dossier dont le seul enfant direct est un sous-dossier est affiché sur une seule ligne (`themes/tiddlywiki/vanilla/`).
 

@@ -1,4 +1,5 @@
 title: $:/plugins/nikorion/plugin-info-tree/language/en-GB/
 
-Tree/PluginShadows: Plugin shadows
-Tree/Overrides: Overrides
+Tree/Heading: Shadows shipped in the plugin
+Tree/PluginShadows: Namespace tiddlers
+Tree/Overrides: Other
