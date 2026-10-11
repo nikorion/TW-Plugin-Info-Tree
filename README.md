@@ -21,7 +21,7 @@ This plugin overrides the shadow tiddler `$:/core/ui/PluginInfo/Default/contents
 
 **From the nikorion plugin library** (TiddlyWiki then offers each new version as an update):
 
-1. On [nikorion.github.io/tw-plugins](https://nikorion.github.io/tw-plugins/), drag the **nikorion plugin library** button onto your wiki (once per wiki).
+1. On [nikorion.github.io/TW-Plugin-Library](https://nikorion.github.io/TW-Plugin-Library/), drag the **nikorion plugin library** button onto your wiki (once per wiki).
 2. Open *Control Panel → Plugins → Get more plugins → Open plugin library*, choose the nikorion tab and install **Plugin Info Tree**.
 
 **By hand**: download [`TW-Plugin-Info-Tree-Plugin.json`](https://nikorion.github.io/TW-Plugin-Info-Tree/TW-Plugin-Info-Tree-Plugin.json) and drag it onto your wiki.
