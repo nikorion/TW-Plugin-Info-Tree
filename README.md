@@ -50,7 +50,7 @@ Sources are in `src/plugin-info-tree/`. The dev wiki (`wiki/`) also loads `tiddl
 
 ## Version history
 
-**v0.1.0**
+**v0.1.0 (2026-07-02)**
 
 Initial release.
 

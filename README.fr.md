@@ -50,7 +50,7 @@ Les sources sont dans `src/plugin-info-tree/`. Le wiki de dev (`wiki/`) charge a
 
 ## Historique des versions
 
-**v0.1.0**
+**v0.1.0 (2026-07-02)**
 
 Première version.
 
